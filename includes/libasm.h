@@ -6,7 +6,7 @@
 /*   By: csapt <csapt@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 13:37:23 by csapt             #+#    #+#             */
-/*   Updated: 2021/04/24 17:08:43 by csapt            ###   ########lyon.fr   */
+/*   Updated: 2021/04/24 18:03:07 by csapt            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+#include <fcntl.h>
 #include <sys/errno.h>
 
 size_t	ft_strlen(const char *src);
