@@ -1,5 +1,7 @@
 NAME = libasm.a
 
+EXECUTABLE = libasm_tester
+
 #LIBASM
 
 LASM_INCLUDES_DIR = includes/
@@ -16,8 +18,6 @@ LASM_SRCS_FILES	=	ft_write.s \
 		  			ft_strdup.s
 
 LASM_SRCS_FILES_BONUS = ft_list_size.s
-
-OBJS_DIR = ./
 
 #OBJS/SRCS/INCLUDES
 
@@ -50,6 +50,10 @@ bonus		: $(OBJS_BONUS)
 		@$(PRINT) "$(ERASE_FULLLINE)\033[1;34m%-20s\033[1;33m%-25s\033[0;32m[OK]\033[0m\n$(SHOW_CURSOR)" "Compiled lib" "$(NAME)"
 		@$(RAN) $(NAME) $(OBJS_BONUS)
 
+run	: $(NAME) $(OBJS_BONUS)
+		@$(PRINT) "$(ERASE_FULLLINE)\033[1;34m%-20s\033[1;33m%-25s\033[0;32m[OK]\033[0m\n$(SHOW_CURSOR)" "Executed lib" "$(NAME)"
+		@$(CC) $(CFLAGS) main.c -I $(LASM_INCLUDES_DIR) -L . -lasm -o $(EXECUTABLE)
+
 $(NAME)	: $(OBJS)
 		@$(PRINT) "$(ERASE_FULLLINE)\033[1;34m%-20s\033[1;33m%-25s\033[0;32m[OK]\033[0m\n$(SHOW_CURSOR)" "Compiled lib" "$(NAME)"
 		@$(RAN) $(NAME) $(OBJS)
@@ -65,12 +69,12 @@ clean		:
 		@$(PRINT) "\033[1;34m%-20s\033[1;33m%-25s\033[0;32m[OK]\033[0m\n" "Cleaning objects" "$(NAME)"
 
 fclean		: clean
-		@$(RM) $(NAME)
+		@$(RM) $(NAME) $(EXECUTABLE)
 		@$(PRINT) "\033[1;34m%-20s\033[1;33m%-25s\033[0;32m[OK]\033[0m\n" "Cleaning lib" "$(NAME)"
 
 re		: fclean all bonus
 
-.PHONY		: all, clean, fclean, re, bonus
+.PHONY		: all, clean, fclean, re, bonus, run
 		
 
 
